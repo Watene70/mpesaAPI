@@ -1,0 +1,129 @@
+// Include splynx-nodejs-api library
+const SplynxApi = require('splynx-nodejs-api');
+// const response = require('./controllers/custController');
+// const{} = require getData()
+const {
+    getData
+} = require("./controllers/custController")
+
+
+
+// With protocol and port if needed
+const SPLYNX_HOST = 'http://196.250.208.233';
+
+// API key info from page: https://SPLYNX_DOMAIN/admin/administration/api-keys
+const API_KEY = 'f86566e918169721e19537f2941aba5a';
+const API_SECRET = '1906b7e13ad993b76563b1007d4215fb';
+
+// Create new api object
+const api = new SplynxApi(SPLYNX_HOST);
+api.version = SplynxApi.API_VERSION_2_0;
+
+// If need see more info
+// api.debug = true;
+
+// Execute custom function when token renew
+// api.on('renew_token', function (res) {
+//     console.log('Renew token handler', res);
+// });
+
+
+// Execute custom function when tokens expired
+// api.on('unauthorized', function (returnData, res, err, body) {
+//     console.log('Unauthorized handler', returnData);
+// });
+
+// login to Splynx admin account
+api
+    .login(SplynxApi.LOGIN_TYPE_API_KEY, {
+        key: API_KEY,
+        secret: API_SECRET
+    })
+    // access the data fetched in Controllers 
+    // .then(() => {
+    //     console.log();
+    //     // response.exports.getData('./controllers/custController')
+    //     getData()
+    .then(() => {
+        getData(res => {
+            const allCustomers = res.response;
+            let i = [];
+            for (i = 0; i < allCustomers.length; i++) {
+                const id = allCustomers[i].id;
+                console.log(id)
+                const data = {
+                    'status': 'active'
+                };
+                api.put('admin/customers/customer', id, data)
+            }
+
+        });
+    })
+    .catch(err => {
+
+        console.log('Errors with status ' + err.statusCode);
+        console.log('error ', err);
+
+    });
+
+
+
+//             //console.log(res.response)
+//             const allCustomers = res.response;
+
+//             // loop (forEach) account and disconnect all acounts in the list
+
+//             forEach(element => {
+
+//             });
+//             const disconnect = allCustomers.filter(customer => (customer.login == 'Cust-885'));
+
+//             return disconnect;
+// .then(() => {
+//     api
+//     api.get('admin/customers/customer')
+//         .then(res => {
+
+
+//console.log(allCustomers);
+
+// Array filter to get Martha
+// const disconnect = allCustomers.filter(customer => (customer.login == 'Cust-885'));
+//allCustomers.forEach(function (allCustomers, index) {
+
+
+// })
+
+
+//console.log(allCustomers[i]);
+// }
+
+
+//)
+// .catch(err => {
+
+//     console.log('Errors with status ' + err.statusCode);
+//     console.log('error ', err);
+
+
+
+//return allCustomers[i];
+//console.log(allCustomers[i]);
+//console.log(allCustomers);
+// })
+// .then(i => {
+
+
+//     //console.log(allCustomers[i].id);
+
+//     // Disconnect customer
+//     api
+
+//     .then(res => {
+//             console.log(res);
+//         })
+//         .catch(err => {
+
+//             console.log('Errors with status ' + err.statusCode);
+//             console.log('error ', err);
+//         });

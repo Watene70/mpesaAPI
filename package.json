@@ -1,0 +1,25 @@
+{
+  "name": "apricot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "dateformat": "^3.0.3",
+    "datetime": "0.0.3",
+    "express": "^4.17.1",
+    "mssql": "^6.0.1",
+    "request": "^2.88.0",
+    "splynx-nodejs-api": "^1.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
