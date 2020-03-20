@@ -48,7 +48,8 @@ module.exports = {
     let promise = Sql.request(Query);
     console.log(typeof promise);
     promise
-      .then((customers) => {6
+      .then((customers) => {
+        6
         return result(null, customers);
       })
       .catch(error => {
