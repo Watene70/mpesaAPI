@@ -14,9 +14,4 @@ router.get("/",
         })
     }
 );
-
 module.exports = router;
-// module.exports = function (app) {
-//     app.route('/cust')
-//         .get(cust.getData)
-// }

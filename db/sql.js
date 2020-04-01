@@ -1,12 +1,9 @@
 var sql = require("mssql");
-
-
 var config = {
     user: "martha",
     password: "mawingu3020",
     server: 'nav.mawingunetworks.com',
     database: 'MawinguBC'
-
 }
 
 function request(query) {
